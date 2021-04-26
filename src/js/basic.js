@@ -1,7 +1,4 @@
 export default function sum(items) {
-  let result = 0;
-  for (const item of items) {
-    result += item;
-  }
+  const result = items.reduce((acc, e) => acc + e, 0);
   return result;
 }

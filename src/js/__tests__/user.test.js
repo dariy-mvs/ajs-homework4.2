@@ -1,6 +1,6 @@
 import { loadUser } from '../user';
 import { httpGet } from '../http';
-import getStringHealth from '../app.js';
+import getStringHealth from '../app';
 
 jest.mock('../http');
 
@@ -17,32 +17,26 @@ test('should call loadUser once', () => {
 });
 
 test('getStringHealth', () => {
-  
-  const result = getStringHealth({name: 'mag', health: 90});
+  const result = getStringHealth({ name: 'mag', health: 90 });
   expect(result).toBe('healthy');
 });
 test('getStringHealth', () => {
-  
-  const result = getStringHealth({name: 'mag', health: 98});
+  const result = getStringHealth({ name: 'mag', health: 98 });
   expect(result).toBe('healthy');
 });
 test('getStringHealth', () => {
-  
-  const result = getStringHealth({name: 'mag', health: 50});
+  const result = getStringHealth({ name: 'mag', health: 50 });
   expect(result).toBe('healthy');
 });
 test('getStringHealth', () => {
-  
-  const result = getStringHealth({name: 'mag', health: 55});
+  const result = getStringHealth({ name: 'mag', health: 55 });
   expect(result).toBe('healthy');
 });
 test('getStringHealth', () => {
-  
-  const result = getStringHealth({name: 'mag', health: 15});
+  const result = getStringHealth({ name: 'mag', health: 15 });
   expect(result).toBe('wounded');
 });
 test('getStringHealth', () => {
-  
-  const result = getStringHealth({name: 'mag', health: 5});
+  const result = getStringHealth({ name: 'mag', health: 5 });
   expect(result).toBe('critical');
 });
