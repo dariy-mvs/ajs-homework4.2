@@ -17,7 +17,7 @@ test('should call loadUser once', () => {
 });
 
 test('getStringHealth', () => {
-  const result = getStringHealth({ name: 'mag', health: 90 });
+  const result = getStringHealth({ name: 'elf', health: 90 });
   expect(result).toBe('healthy');
 });
 test('getStringHealth', () => {
