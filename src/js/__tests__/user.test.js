@@ -1,6 +1,6 @@
 import { loadUser } from '../user';
 import { httpGet } from '../http';
-import getStringHealth from '../app';
+import sortHeroes from '../app';
 
 jest.mock('../http');
 
@@ -16,27 +16,17 @@ test('should call loadUser once', () => {
   expect(httpGet).toBeCalledWith('http://server:8080/users/1');
 });
 
-test('getStringHealth', () => {
-  const result = getStringHealth({ name: 'elf', health: 90 });
-  expect(result).toBe('healthy');
-});
-test('getStringHealth', () => {
-  const result = getStringHealth({ name: 'mag', health: 98 });
-  expect(result).toBe('healthy');
-});
-test('getStringHealth', () => {
-  const result = getStringHealth({ name: 'mag', health: 50 });
-  expect(result).toBe('healthy');
-});
-test('getStringHealth', () => {
-  const result = getStringHealth({ name: 'mag', health: 55 });
-  expect(result).toBe('healthy');
-});
-test('getStringHealth', () => {
-  const result = getStringHealth({ name: 'mag', health: 15 });
-  expect(result).toBe('wounded');
-});
-test('getStringHealth', () => {
-  const result = getStringHealth({ name: 'mag', health: 5 });
-  expect(result).toBe('critical');
+test('sortHeroes', () => {
+  const result = sortHeroes([
+    { name: 'мечник', health: 10 },
+    { name: 'маг', health: 100 },
+    { name: 'лучник', health: 80 },
+    { name: 'лучник', health: 80 },
+  ]);
+  expect(result).toEqual([
+    { name: 'маг', health: 100 },
+    { name: 'лучник', health: 80 },
+    { name: 'лучник', health: 80 },
+    { name: 'мечник', health: 10 },
+  ]);
 });
